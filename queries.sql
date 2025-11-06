@@ -35,4 +35,4 @@ CREATE TABLE visitors (
 
 
 
-elect number, floor, name from rooms r join statuses s on s.id = r.status;
+select number, floor, name from rooms r join statuses s on s.id = r.status;

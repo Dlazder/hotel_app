@@ -14,6 +14,7 @@ class MainWindow(QMainWindow):
 
 	def initUI(self):
 		self.setWindowTitle('Hotel')
+		self.setGeometry(300, 300, 600, 400)
 
 		self.stacked_widget = QStackedWidget()
 		self.setCentralWidget(self.stacked_widget)
