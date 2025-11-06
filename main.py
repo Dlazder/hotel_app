@@ -1,10 +1,8 @@
-from get_connection import get_connection
 from PyQt6.QtWidgets import *
 from PyQt6.QtCore import *
 
 from login_widget import LoginWidget
 from data_widget import DataWidget
-
 
 
 class MainWindow(QMainWindow):
@@ -24,6 +22,9 @@ class MainWindow(QMainWindow):
 
 		self.stacked_widget.addWidget(self.login_widget)
 		self.stacked_widget.addWidget(self.data_widget)
+
+		# Comment line below for enable login page
+		self.stacked_widget.setCurrentWidget(self.data_widget)
 
 	def show_data_screen(self):
 		self.stacked_widget.setCurrentWidget(self.data_widget)
