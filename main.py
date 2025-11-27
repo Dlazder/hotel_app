@@ -1,5 +1,4 @@
-from PyQt6.QtWidgets import *
-from PyQt6.QtCore import *
+from PyQt6.QtWidgets import QMainWindow, QStackedWidget, QApplication
 
 from login_widget import LoginWidget
 from data_widget import DataWidget

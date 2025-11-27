@@ -1,17 +1,15 @@
 from get_connection import get_connection
-from PyQt6.QtWidgets import *
-from PyQt6.QtCore import *
+from PyQt6.QtWidgets import QVBoxLayout, QComboBox, QLabel, QTableWidget, QTableWidgetItem, QWidget
 
 
 class DataWidget(QWidget):
 	def __init__(self):
 		super().__init__()
 		self.initUI()
+		self.conn = get_connection()
 
 	def initUI(self):
-
-		conn = get_connection()
-		cursor = conn.cursor()
+		cursor = self.conn.cursor()
 		
 		cursor.execute('select number, floor, name from rooms r join statuses s on s.id = r.status;')
 		rooms = cursor.fetchall()
@@ -41,12 +39,11 @@ class DataWidget(QWidget):
 		main_layout.addWidget(text)
 
 	def on_status_change(self, row, new_status):
-		conn = get_connection()
-		cursor = conn.cursor()
+		cursor = self.conn.cursor()
 		status_id = None
 		for id, name in self.statuses:
 			if name == new_status:
 				status_id = id
 				break
 		cursor.execute('UPDATE rooms set status = %s WHERE id = %s', [status_id, row+1])
-		conn.commit()
+		self.conn.commit()

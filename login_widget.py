@@ -1,6 +1,6 @@
 from get_connection import get_connection
-from PyQt6.QtWidgets import *
-from PyQt6.QtCore import *
+from PyQt6.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QPushButton, QFrame, QMessageBox, QWidget
+from PyQt6.QtCore import Qt
 
 
 class LoginWidget(QWidget):
@@ -8,6 +8,7 @@ class LoginWidget(QWidget):
 		super().__init__()
 		self.parent = parent
 		self.initUI()
+		self.conn = get_connection()
 
 	def initUI(self):
 
@@ -40,8 +41,8 @@ class LoginWidget(QWidget):
 		login = self.login_input.text()
 		password = self.password_input.text()
 
-		conn = get_connection()
-		cursor = conn.cursor()
+		
+		cursor = self.conn.cursor()
 
 		cursor.execute('SELECT login, password FROM users WHERE login = %s AND password = %s', (login, password))
 		result = cursor.fetchone()
