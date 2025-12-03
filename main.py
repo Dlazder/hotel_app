@@ -23,7 +23,7 @@ class MainWindow(QMainWindow):
 		self.stacked_widget.addWidget(self.data_widget)
 
 		# Comment line below for enable login page
-		self.stacked_widget.setCurrentWidget(self.data_widget)
+		# self.stacked_widget.setCurrentWidget(self.data_widget)
 
 	def show_data_screen(self):
 		self.stacked_widget.setCurrentWidget(self.data_widget)

@@ -5,8 +5,8 @@ from PyQt6.QtWidgets import QVBoxLayout, QComboBox, QLabel, QTableWidget, QTable
 class DataWidget(QWidget):
 	def __init__(self):
 		super().__init__()
-		self.initUI()
 		self.conn = get_connection()
+		self.initUI()
 
 	def initUI(self):
 		cursor = self.conn.cursor()
